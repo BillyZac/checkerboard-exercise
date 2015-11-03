@@ -10,21 +10,24 @@ body.style.width = '100%'
 /********************************************/
 // BUILD THE CHECKERBOARD
 /********************************************/
-for (var i=0; i < 81; i++) {
-  // Create a square
-  var square = document.createElement('div')
+function buildBoard() {
+  for (var i=0; i < 81; i++) {
+    // Create a square
+    var square = document.createElement('div')
 
-  // Set layout properties
-  square.style.width = '11.1%'
-  square.style.paddingBottom = '11.1%'
-  square.style.float = 'left'
+    // Set layout properties
+    square.style.width = '11.1%'
+    square.style.paddingBottom = '11.1%'
+    square.style.float = 'left'
 
-  // Color the square
-  square.style.backgroundColor = squareColor(i)
+    // Color the square
+    square.style.backgroundColor = squareColor(i)
 
-  // Put the square on the board
-  body.appendChild(square)
+    // Put the square on the board
+    body.appendChild(square)
+  }
 }
+buildBoard()
 
 // Takes the number of a square. Returns a different color for each square, in HSL format, based on where it is in the sequence.
 function squareColor(i) {
