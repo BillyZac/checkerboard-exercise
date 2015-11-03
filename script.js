@@ -3,8 +3,8 @@
 /********************************************/
 var body = document.getElementsByTagName('body')[0]
 body.style.backgroundColor = '#FFFFFF'
-body.style.margin = '50px auto'
-body.style.width = '600px'
+body.style.margin = '0'
+body.style.width = '100%'
 
 
 /********************************************/
@@ -20,11 +20,17 @@ for (var i=0; i < 81; i++) {
   square.style.float = 'left'
 
   // Color the square
-  var h = Math.floor(Math.random()*100) /* Set hue to a number between 0 and 100 */
-  var color = 'hsl(' + h + ', 100%, 80%)'
-  console.log(color)
-  square.style.backgroundColor = color
+  square.style.backgroundColor = squareColor(i)
 
   // Put the square on the board
   body.appendChild(square)
+}
+
+// Takes the number of a square. Returns a different color for each square, in HSL format, based on where it is in the sequence.
+function squareColor(i) {
+  var h = '200'
+  var s = '40%'
+  var l = (i+100)/3 + '%'
+  var color = 'hsl(' + h + ', '+ s + ', ' + l + ')'
+  return color
 }
