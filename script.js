@@ -20,20 +20,41 @@ function buildBoard() {
     square.style.paddingBottom = '11.1%'
     square.style.float = 'left'
 
-    // Color the square
-    square.style.backgroundColor = squareColor(i)
 
     // Put the square on the board
     body.appendChild(square)
   }
 }
-buildBoard()
+
+
+/********************************************/
+// COLOR THE SQUARES
+/********************************************/
+function colorSquares() {
+  // Color the square
+  for (var i=0; i < 81; i++) {
+    var square = document.getElementsByTagName('div')[i]
+    square.style.backgroundColor = squareColor(i)
+  }
+}
 
 // Takes the number of a square. Returns a different color for each square, in HSL format, based on where it is in the sequence.
 function squareColor(i) {
-  var h = '200'
+  var h = Math.floor(Math.random()*100) /* Set hue to a number between 0 and 100 */
   var s = '40%'
   var l = (i+100)/3 + '%'
   var color = 'hsl(' + h + ', '+ s + ', ' + l + ')'
   return color
 }
+
+
+/********************************************/
+// EXECUTE
+/********************************************/
+
+// Build the board initially
+buildBoard()
+colorSquares()
+
+// Recolor the board every two seconds
+setInterval('colorSquares()', 2000)
